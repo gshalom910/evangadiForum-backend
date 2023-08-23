@@ -8,7 +8,11 @@ const port = process.env.PORT || 4500;
 const questionRouter = require("./server/api/questions/question.router");
 const answerRouter = require("./server/api/answers/answer.router");
 
-app.use(cors());
+app.use(
+  cors({
+    origin: true,
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/users", userRouter);
