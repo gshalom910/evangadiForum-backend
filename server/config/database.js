@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mysql = require("mysql2");
 // const pool = mysql.createPool({
 //   host: process.env.DB_HOST,
@@ -8,7 +9,7 @@ const mysql = require("mysql2");
 //   password: process.env.DB_PASS,
 // });
 
-const pool = mysql.createConnection(process.env.DATABASE_URL);
+const pool = mysql.createPool(process.env.DATABASE_URL);
 
 pool.getConnection(function (err, conn) {
   if (err) {
