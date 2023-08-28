@@ -106,18 +106,16 @@ module.exports = {
     const { email, password } = req.body;
     //validation
     if (!email || !password)
-      return res
-        .status(400)
-        .json({ msg: "Not all fields have been provided!" });
+      return res.status(400).render("Not all fields have been provided!");
     getUserByEmail(email, (err, results) => {
       if (err) {
         console.log(err);
-        res.status(500).json({ msg: "database connection err" });
+        res.status(500).send({ msg: "database connection err" });
       }
       if (!results) {
         return res
           .status(404)
-          .json({ msg: "No account with this email has been registered" });
+          .end({ msg: "No account with this email has been registered" });
       }
       const isMatch = bcrypt.compareSync(password, results.user_password);
       if (!isMatch) return res.status(404).json({ msg: "Invalid Credentials" });
