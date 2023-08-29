@@ -106,7 +106,9 @@ module.exports = {
     const { email, password } = req.body;
     //validation
     if (!email || !password)
-      return res.status(400).render("Not all fields have been provided!");
+      return res
+        .status(400)
+        .json({ msg: "Not all fields have been provided!" });
     getUserByEmail(email, (err, results) => {
       if (err) {
         console.log(err);
@@ -115,7 +117,7 @@ module.exports = {
       if (!results) {
         return res
           .status(404)
-          .end({ msg: "No account with this email has been registered" });
+          .json({ msg: "No account with this email has been registered" });
       }
       const isMatch = bcrypt.compareSync(password, results.user_password);
       if (!isMatch) return res.status(404).json({ msg: "Invalid Credentials" });
@@ -123,7 +125,7 @@ module.exports = {
         expiresIn: "1h",
       });
       console.log(results);
-      return res.json({
+      return res.status(200).json({
         token,
         user: {
           id: results.user_id,
