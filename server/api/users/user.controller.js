@@ -105,10 +105,11 @@ module.exports = {
   login: (req, res) => {
     const { email, password } = req.body;
     //validation
-    if (!email || !password)
+    if (!email || !password) {
       return res
         .status(400)
         .json({ msg: "Not all fields have been provided!" });
+    }
     getUserByEmail(email, (err, results) => {
       if (err) {
         console.log(err);
