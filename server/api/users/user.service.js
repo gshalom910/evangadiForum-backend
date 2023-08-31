@@ -52,7 +52,7 @@ module.exports = {
   },
   getUserByEmail: (email, callback) => {
     pool.query(
-      `SELECT registration.user_id,user_name,user_email,user_password,first_name,last_name FROM Registration JOIN Profile ON registration.user_id = profile.user_id WHERE registration.user_email = ?`,
+      `SELECT * FROM Registration WHERE user_email = ?`,
       [email],
       (err, result) => {
         if (err) {

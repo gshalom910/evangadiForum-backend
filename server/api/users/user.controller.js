@@ -130,8 +130,8 @@ module.exports = {
         token,
         user: {
           id: results.user_id,
-          display_name: results.first_name,
-          display_Lname: results.last_name,
+          display_name: results.user_name,
+          // display_Lname: results.last_name,
         },
       });
     });
