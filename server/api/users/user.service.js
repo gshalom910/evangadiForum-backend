@@ -58,6 +58,7 @@ module.exports = {
         if (err) {
           return callback(err);
         }
+        // console.log(result[0]);
         return callback(null, result[0]);
       }
     );
