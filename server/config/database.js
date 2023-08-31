@@ -7,7 +7,7 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   password: process.env.DB_PASS,
-  port: 3306,
+  // port: 3306,
 });
 
 // const pool = mysql.createPool(process.env.DATABASE_URL);
