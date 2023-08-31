@@ -22,7 +22,7 @@ module.exports = {
   },
   getAllQuestions: (callback) => {
     pool.query(
-      `SELECT registration.user_name, question,question_description,question_code_block,tags,post_id FROM Question JOIN Registration ON question.user_id = registration.user_id  ORDER BY question_id DESC`,
+      `SELECT user_name, question,question_description,question_code_block,tags,post_id FROM Question JOIN Registration ON question.user_id = registration.user_id  ORDER BY question_id DESC`,
       [],
       (err, result) => {
         if (err) {
