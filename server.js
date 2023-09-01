@@ -29,13 +29,13 @@ const startApp = async (port) => {
   const connection = await pool.getConnection();
   console.log("db connection is established");
   try {
-    await connection.query(
-      registration,
-      console.log("registration table created")
+    await connection.query(registration);
+    await connection.query(profile);
+    await connection.query(question);
+    await connection.query(answer);
+    console.log(
+      `registration table created,\n profile table created \n question table created \n answer table created`
     );
-    await connection.query(profile, console.log("profile table created"));
-    await connection.query(question, console.log("question table created"));
-    await connection.query(answer, console.log("answer table created"));
     app.listen(port, () => {
       console.log(`Listening to port ${port}`);
     });
