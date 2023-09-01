@@ -20,9 +20,10 @@ module.exports = {
 
     //validation
     if (!userName || !firstName || !lastName || !email || !password)
-      return res
-        .status(400)
-        .json({ msg: "Not all fields have been provided!" });
+      return res.status(400).json({
+        status: false,
+        msg: "Not all fields have been provided!",
+      });
     if (password.length < 8)
       return res
         .status(400)
@@ -35,9 +36,10 @@ module.exports = {
           return res.status(err).json({ msg: "database connection err" });
         }
         if (results.length > 0) {
-          return res
-            .status(400)
-            .json({ msg: "An account with this email already exists!" });
+          return res.status(400).json({
+            status: false,
+            msg: "An account with this email already exists!",
+          });
         } else {
           //password encryption
           const salt = bcrypt.genSaltSync();
