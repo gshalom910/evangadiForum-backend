@@ -7,7 +7,7 @@ const {
   login,
 } = require("./user.controller");
 
-router.route("/").post(createUser);
+router.post("/", createUser);
 router.get("/all", getUsers);
 router.get("/", auth, getUserById);
 router.post("/login", login);
